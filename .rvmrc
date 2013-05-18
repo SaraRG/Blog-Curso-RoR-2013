@@ -1,0 +1,1 @@
+rvm --create use default@Blog-Curso-RoR13 > /dev/null
