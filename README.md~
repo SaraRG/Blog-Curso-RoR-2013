@@ -1,0 +1,7 @@
+# This is my README
+
+#Hacer: 
+# /bin/bash --login
+# rake db:migrate
+# rake db:seed
+

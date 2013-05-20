@@ -7,7 +7,6 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -36,3 +35,24 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+# Generador de diagramas de clases
+gem 'railroady'
+
+# Autenticación de usuarios con Devise
+gem 'devise'
+
+# Interfaz de Administración de Rails
+gem 'rails_admin'
+
+# Editor de texto
+gem 'tinymce-rails'
+
+# Paginacion
+gem 'kaminari'
+
+#SimpleForm
+gem 'simple_form'
+
+#Seleccionar País
+gem 'country_select'
