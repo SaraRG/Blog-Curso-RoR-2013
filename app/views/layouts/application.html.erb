@@ -1,27 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blog</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body style = "background: #EEEEEE;">
+  <head>
+    <title>Blog</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "bootstrap" %>
+    <%= javascript_include_tag "bootstrap-responsive" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div align=right id="user_nav">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
+
+
+<div class="container">  <!-- <div class="container"> 1 --> 
+  <nav class='navbar'> <!-- <nav class='navbar'> -->
+    <div class='navbar-inner'> <!-- <div class='navbar-inner'> -->
+      <div class="container"> <!-- <div class="container"> 2-->
+        <ul class='nav'>
+          <li><%= link_to (image_tag 'FotoBlog.jpg', :height => '200', :width => '200'), root_path, :class => 'brand'%></li>
+        </ul>
+        <ul class='nav nav-pills alineado'>
+        <!-- <li><%= link_to 'Inicio', root_path %></li> -->
+          <%if current_user%> <!-- Si existe current user es  porque el usuario está logueado -->
+
+          <li><%=link_to "Post", posts_path()%></li>
+
+          <li><%=link_to "Cerrar Sesión #{current_user.name}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
+          <%end%>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<%= yield %>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="hero-unit">
+            <div class="flash">
+                <%- if !notice.nil? -%>
+                <div class="alert alert-success">
+                  <button class="close" data-dismiss="alert">×</button>
+                  <p><%= notice %></p>
+                </div>
+                <%- end -%> 
+                <%- if !alert.nil? -%>
+                <div class="alert alert-error">
+                  <button class="close" data-dismiss="alert">×</button>
+                  <p><%= alert %></p>
+                    </div>
+                <%- end -%>     
+            </div>
+            <%= yield %>
+          </div>
+        </div>
+      </div> <!-- rowfluid 1 cerrado -->
 
-</body>
+        
+      <hr>
+
+
+
+      <div class="row-fluid">
+        <div class="span6">
+          <div class="footer-left">
+            <p style="color: #FFFFFF"> <small><strong>BLog Curso Ruby on Rails</strong> 2013 <SUP>©</SUP></small></p>
+          </div>
+        </div>
+        <div class="span6">
+          <div class="footer-right">
+            <div class="pull-right">
+              <p style="color: #FFFFFF"> <small>By Sara Rijo García</small> </p>
+            </div>
+          </div>
+        </div>
+      </div> <!-- rowfluid 3 cerrado -->
+    </div> <!-- <div class="container"> 1 --> 
+  </body>
 </html>

@@ -11,3 +11,20 @@
  *= require_self
  *= require_tree .
  */
+
+ .alineado{
+	text-align: center;
+	padding-top: 6%;
+}
+
+div.alineado{
+	padding-right: 5%;
+}
+
+.menu-alineado{
+	text-align: center;
+}
+
+.nav{
+	padding-top: 4%;
+}
