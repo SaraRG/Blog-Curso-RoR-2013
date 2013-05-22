@@ -14,27 +14,38 @@
 
 
 
-<div class="container">  <!-- <div class="container"> 1 --> 
-  <nav class='navbar'> <!-- <nav class='navbar'> -->
-    <div class='navbar-inner'> <!-- <div class='navbar-inner'> -->
-      <div class="container"> <!-- <div class="container"> 2-->
-        <ul class='nav'>
-          <li><%= link_to (image_tag 'FotoBlog.jpg', :height => '200', :width => '200'), root_path, :class => 'brand'%></li>
-        </ul>
-        <ul class='nav nav-pills alineado'>
-        <!-- <li><%= link_to 'Inicio', root_path %></li> -->
+
+
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+       <!-- Be sure to leave the brand out there if you want it shown -->
+      <%= link_to (image_tag 'FotoBlog.jpg', :height => '200', :width => '200'), root_path, :class => 'brand'%>
+
+      <ul class="nav">
           <%if current_user%> <!-- Si existe current user es  porque el usuario está logueado -->
-
-          <li><%=link_to "Post", posts_path()%></li>
-
-          <li><%=link_to "Cerrar Sesión #{current_user.name}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
+            <li><%=link_to "Post", posts_path()%></li>
+            <li><%=link_to "Cerrar Sesión #{current_user.name}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
           <%end%>
-
-        </ul>
-      </div>
+      </ul>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div> 
     </div>
-  </nav>
+  </div>
 </div>
+<div class='container'>
+<ul class="breadcrumb">
+  <%= render_breadcrumbs :separator => ' / ' %>
+</ul>
+</div>
+
+
+
+
 
 
       <div class="row-fluid">

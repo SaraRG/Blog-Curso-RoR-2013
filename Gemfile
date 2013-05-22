@@ -50,9 +50,13 @@ gem 'tinymce-rails'
 
 # Paginacion
 gem 'kaminari'
+#gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 
 #SimpleForm
 gem 'simple_form'
 
 #Seleccionar País
 gem 'country_select'
+
+#Migas de Pan =  ruta desde la home hasta la pantalla que se está consultando, y ayudan a mejorar el posicionamiento.
+gem "breadcrumbs_on_rails"

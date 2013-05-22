@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
+  add_breadcrumb "Home", :root_path
+  add_breadcrumb "Lista de Post", :posts_path, :only => %w(index show new edit)
+
   # GET /posts
   # GET /posts.json
   def index
     # @posts = Post.all
     # @posts = Post.paginate(:page => params[:page])
     # @posts = Post.paginate(:page => params[:page], :per_page => 5)
+
     @posts = Post.order(:created_at).page params[:page]
 
     respond_to do |format|
@@ -18,6 +22,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
+    add_breadcrumb "Post de #{@post.name}"
+    
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
@@ -27,6 +34,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    add_breadcrumb "Nuevo post"
+
     @post = Post.new
 
     respond_to do |format|
@@ -38,6 +47,9 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
+    add_breadcrumb "Post de #{@post.name}", Post.find(params[:id])
+    add_breadcrumb "Editar Post"
   end
 
   # POST /posts
