@@ -1,7 +1,9 @@
+<div align="center">
+
 <%= tinymce %>
 
 
-<%= simple_form_for(@post, :html => {:class => 'form-horizontal' }) do |f|  %>
+<%= simple_form_for(@post, :html => {:class => 'well'}) do |f|  %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -15,22 +17,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :Autor%>
+    <%= f.text_field :name, :class => "input-xlarge", :rows => 10 %>
   </div>
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :Título %>
+    <%= f.text_field :title, :class => "input-xlarge", :rows => 10 %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label :Contenido %>
     <%= f.text_area :content, class:"tinymce"%>
   </div>
   <div class="field">
-    <%= f.label :published %> 
+    <%= f.label :¿Publicar? %> 
     <%= f.check_box :published %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+    <%= f.submit "Enviar", class: :"btn btn-primary active"%>
+    <%= link_to 'Cancelar', posts_path, class: :"btn btn-danger active"%>
+      <% session[:url_anterior_edit] = nil %>
 <% end %>
+
+</div>

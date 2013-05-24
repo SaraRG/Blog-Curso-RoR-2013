@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  add_breadcrumb "Home", :root_path
+
   add_breadcrumb "Lista de Post", :posts_path, :only => %w(index show new edit)
 
   # GET /posts

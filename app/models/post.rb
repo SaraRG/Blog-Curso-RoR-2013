@@ -7,5 +7,6 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
   paginates_per 5
+  default_scope order("created_at DESC")   #muestra los últimos posts creados.
 
 end

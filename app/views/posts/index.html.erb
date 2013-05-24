@@ -1,12 +1,14 @@
+<div style="text-align:center">
 <h1>Lista de Post</h1>
 
  <%= paginate @posts, :theme => 'twitter-bootstrap' %>
 
-<table>
+<table class="table table-striped">
   <tr>
-    <th>Name</th>
-    <th>Title</th>
-    <th>Content</th>
+    <th>Autor</th>
+    <th>Título</th>
+    <th>Contenido</th>
+    <th>¿Publicado?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,13 +19,15 @@
     <td><%= post.name %></td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= post.published %></td>
+    <td><%= link_to 'Mostrar', post %></td>
+    <td><%= link_to 'Editar', edit_post_path(post) %></td>
+    <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: "¿Seguro que desea eliminar este post?" } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'Nuevo Post', new_post_path, class: :"btn btn-primary active" %>
+</div>
