@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_filter :authenticate_user!
   add_breadcrumb "Lista de Post", :posts_path, :only => %w(index show new edit)
 
   # GET /posts
@@ -37,6 +38,8 @@ class PostsController < ApplicationController
     add_breadcrumb "Nuevo post"
 
     @post = Post.new
+
+    @post.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb

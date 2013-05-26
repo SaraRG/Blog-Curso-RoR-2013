@@ -26,7 +26,7 @@
       <ul class="nav">
           <%if current_user%> <!-- Si existe current user es  porque el usuario está logueado -->
             <li><%=link_to "Post", posts_path()%></li>
-            <li><%=link_to "Cerrar Sesión #{current_user.name}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
+            <li><%=link_to "Cerrar Sesión #{current_user.username}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
           <%end%>
       </ul>
  
