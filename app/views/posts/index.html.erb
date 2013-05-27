@@ -16,7 +16,7 @@
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.name %></td>
+    <td><%= post.user.username unless post.user.blank? %></td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
     <td><%= post.published %></td>

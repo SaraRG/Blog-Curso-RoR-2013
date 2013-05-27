@@ -39,8 +39,6 @@ class PostsController < ApplicationController
 
     @post = Post.new
 
-    @post.user = current_user
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -59,6 +57,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
