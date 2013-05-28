@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    add_breadcrumb "Post de #{@post.name}"
+    add_breadcrumb "Post de #{@post.user.username}"
     
 
     respond_to do |format|
