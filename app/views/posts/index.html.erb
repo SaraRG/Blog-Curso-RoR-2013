@@ -20,7 +20,11 @@
     <td><%= post.user.username unless post.user.blank? %></td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= post.published %></td>
+    <% if  post.published == true %>
+      <td>Sí</td>
+    <% else %>
+      <td>No</td>
+    <% end %>
     <td><%= link_to 'Mostrar', post , class: :"btn btn-small btn-info active"%></td>
     <% if (current_user.username == post.user.username)%>
       <td><%= link_to 'Editar', edit_post_path(post), class: :"btn btn-small btn-warning active" %></td>

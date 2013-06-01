@@ -16,7 +16,7 @@
 
 
 
-
+<div align="center">
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -25,8 +25,8 @@
 
       <ul class="nav">
           <%if current_user%> <!-- Si existe current user es  porque el usuario está logueado -->
-            <li><%=link_to "Post", posts_path()%></li>
-            <li><%=link_to "Cerrar Sesión #{current_user.username}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
+            <li class="brand active"><%=link_to "Post", posts_path()%></li>
+            <li class="brand active"><%=link_to "Cerrar Sesión #{current_user.username}",  destroy_user_session_path, :method => :delete %></li> <!-- Muestra el log out y el nombre del usuario -->
           <%end%>
       </ul>
  
@@ -41,7 +41,10 @@
 <ul class="breadcrumb">
   <%= render_breadcrumbs :separator => ' / ' %>
 </ul>
-</div>
+</div></div>
+
+
+
 
 
 

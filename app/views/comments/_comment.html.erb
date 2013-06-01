@@ -1,14 +1,12 @@
-<p>
-  <b>Commenter:</b>
-  <%= comment.commenter %>
-</p>
 
+<p><strong>Usuario: </strong><%= comment.commenter%>  </p>
+<p><strong>Comentario: </strong><%= comment.body %> </p>
+<% if ((current_user.username == @post.user.username) || (current_user.username == comment.commenter))%>
 <p>
-  <b>Comment:</b>
-  <%= comment.body %>
+  <%= link_to 'Eliminar Comentario', [comment.post, comment], 
+    :confirm => '¿Seguro que desea eliminar este comentario?',
+    :method => :delete,  
+    class: :"btn btn-mini btn-danger active"%>
 </p>
-<p>
-  <%= link_to 'Destroy Comment', [comment.post, comment], 
-		:confirm => 'Are you sure?',
-		:method => :delete  %>
-</p>
+<% end %>
+<hr style="border:1px dashed blue" />

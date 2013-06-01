@@ -28,3 +28,9 @@ div.alineado{
 .nav{
 	padding-top: 4%;
 }
+
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}

@@ -1,37 +1,46 @@
-<p>
-  <b>Autor:</b>
-  <%= @post.user.username %>
-</p>
+<table class="table table-striped">
+  <tr>
+    <th>Autor</th>
+    <th>Título</th>
+    <th>Contenido</th>
+    <th>¿Publicado?</th>
+  </tr>
 
-<p>
-  <b>Título:</b>
-  <%= @post.title %>
-</p>
+  <tr class="info">
+    <td><%= @post.user.username %></td>
+    <td><%= @post.title %></td>
+    <td><%= @post.content %></td>
+    <% if @post.published == true %>
+      <td>Sí</td>
+    <% else %>
+      <td>No</td>
+    <% end %>
+  </tr>
+</table>
 
-<p>
-  <b>Contenido:</b>
-  <%= @post.content %>
-</p>
+<%= render @post.comments%>
 
-<h2>Commentarios</h2>
-<%= render @post.comments %>
 
-<h2>Añadir Comentarios:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.label :Usuario %>
-    <%= f.text_field :commenter %> 
-  </div>
-  <div class="field">
-    <%= f.label :Comentario %>
-    <%= f.text_area :body, class: "tinymce"  %> 
-  </div>
-  <div class="actions">
-    <%= f.submit "Comentar", class: :"btn btn-primary active" %>
-  </div>
-<% end %>
+<div align="center">
 
-<%= link_to 'Editar', edit_post_path(@post), class: :"btn btn-warning active" %> 
-<%= link_to 'Atrás', posts_path, class: :"btn btn-danger active" %>
+  <%= tinymce %>
 
-<%= tinymce %>
+  <%= simple_form_for([@post, @post.comments.build], :html => {:class => 'well'}) do |f|  %>
+
+    <div class="field">
+      <%= f.label :Usuario %>
+      <%= f.text_field :commenter, :class => "input-xlarge", :rows => 10%> 
+    </div>
+
+    <div class="field">
+      <%= f.label :Comentario %>
+      <%= f.text_area :body, class: "tinymce", :rows => 1  %> 
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Comentar", class: :"btn btn-primary active"%>
+      <%= link_to 'Cancelar', posts_path, class: :"btn btn-danger active"%>
+      <% session[:url_anterior_edit] = nil %>
+    </div>
+  <% end %>
+</div>

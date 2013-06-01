@@ -24,7 +24,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     add_breadcrumb "Post de #{@post.user.username}"
-    
 
     respond_to do |format|
       format.html # show.html.erb

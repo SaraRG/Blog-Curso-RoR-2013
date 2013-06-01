@@ -1,1 +1,7 @@
+<% if !current_user %>
 <%= render "devise/sessions/new" %>
+<% else %>
+	<h4 style="text-align:center">Bienvenido a BLOG una web en la que puedes expresarte libremente</h4> 
+<% end %>
+
+
