@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
 
-    add_breadcrumb "Post de #{@post.name}", Post.find(params[:id])
+    add_breadcrumb "Post de #{@post.user.username}", Post.find(params[:id])
     add_breadcrumb "Editar Post"
   end
 

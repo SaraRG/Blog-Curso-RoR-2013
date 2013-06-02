@@ -1,26 +1,25 @@
+<div class='navbar-inner'> <!-- <div class='navbar-inner'> -->
+  <div style="text-align:center">
 
-  <div class='navbar-inner'> <!-- <div class='navbar-inner'> -->
-    <div style="text-align:center">
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-horizontal') do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, :required => false, :autofocus => true, placeholder: 'user@domain.com', autocomplete: "on", label: 'Correo electrónico' %>
+        <%= f.input :password, :required => false, placeholder: 'Introduzca su contraseña', label: 'Contraseña'%>
+        <p><%= f.check_box :remember_me,:as => :boolean if devise_mapping.rememberable? %> Recordar mis datos</p>
+      </div>
 
-      <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => 'form-horizontal') do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email, :required => false, :autofocus => true, placeholder: 'user@domain.com', autocomplete: "on", label: 'Correo electrónico' %>
-          <%= f.input :password, :required => false, placeholder: 'Introduzca su contraseña', label: 'Contraseña'%>
-          <p><%= f.check_box :remember_me,:as => :boolean if devise_mapping.rememberable? %> Recordar mis datos</p>
-        </div>
+      <div class="actions">
+        <%= f.submit "Iniciar Sesión", class: :"btn btn-primary active"%>
+      </div>
+    <% end %>
+    
+    <%= render "devise/shared/links" %>
 
-        <div class="actions">
-          <%= f.submit "Iniciar Sesión", class: :"btn btn-primary active"%>
-        </div>
-      <% end %>
-      
-      <%= render "devise/shared/links" %>
+    </br>
 
-      </br>
+    <%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path, class: :"btn btn-large btn-success active" %>
 
-      <%= link_to "¿Eres nuevo? Regístrate", new_user_registration_path, class: :"btn btn-large btn-success active" %>
-
-      </br>
-      
-    </div>
+    </br>
+    
   </div>
+</div>
