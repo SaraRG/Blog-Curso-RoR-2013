@@ -1,5 +1,5 @@
 <p><strong>Usuario: </strong><%= comment.commenter%>  </p>
-<p><strong>Comentario: </strong><%= comment.body %> </p>
+<p><strong>Comentario: </strong><%= comment.body%> </p>
 <% if ((current_user.username == @post.user.username) || (current_user.username == comment.commenter))%>
 <p>
   <%= link_to 'Eliminar Comentario', [comment.post, comment], 

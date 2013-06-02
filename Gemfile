@@ -60,3 +60,6 @@ gem 'country_select'
 
 #Migas de Pan =  ruta desde la home hasta la pantalla que se está consultando, y ayudan a mejorar el posicionamiento.
 gem "breadcrumbs_on_rails"
+
+#Gema para generar pdf
+gem 'pdf-writer', :git => 'git://github.com/metaskills/pdf-writer.git'

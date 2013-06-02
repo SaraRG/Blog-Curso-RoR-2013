@@ -15,6 +15,25 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
+      format.pdf do
+        @posts = Post.all
+        pdf = PDF::Writer.new   
+        pdf.text "Lista de Posts" , :font_size => 36, :justification => :center
+        pdf.text " "
+        @posts.each do |post|
+          pdf.text "Autor: ",  :font_size => 12
+          pdf.text post.user.username
+          pdf.text " "
+          pdf.text "Titulo: "
+          pdf.text post.title
+          pdf.text " "
+          pdf.text "Contenido: " 
+          pdf.text post.content
+          pdf.text "--------------------------------------------------------------------------------------------------------------------------------------"
+        end
+        send_data pdf.render, :filename => 'Lista de Posts.pdf', :type => 'application/pdf', :disposition => 'inline'
+        #send_data PostDrawer.draw(@posts), :filename => '#{@post.user.username}Post.pdf', :type => 'application/pdf', :disposition => 'inline'
+      end
     end
   end
 
@@ -28,6 +47,19 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
+      format.pdf do
+        pdf = PDF::Writer.new   
+        pdf.text "Post de #{@post.user.username}" , :font_size => 36, :justification => :center
+        pdf.text " "
+        pdf.text "Titulo: ", :font_size => 12
+        pdf.text @post.title
+        pdf.text " "
+        pdf.text "Contenido: " 
+        pdf.text @post.content
+
+        send_data pdf.render, :filename => "Post de #{@post.user.username}", :type => 'application/pdf', :disposition => 'inline'
+        #send_data PostDrawer.draw(@posts), :filename => '#{@post.user.username}Post.pdf', :type => 'application/pdf', :disposition => 'inline'
+      end
     end
   end
 

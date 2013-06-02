@@ -9,7 +9,7 @@
   <tr class="info">
     <td><%= @post.user.username %></td>
     <td><%= @post.title %></td>
-    <td><%= @post.content %></td>
+    <td><%= @post.content.html_safe %></td>
     <% if @post.published == true %>
       <td>Sí</td>
     <% else %>
@@ -18,31 +18,27 @@
   </tr>
 </table>
 
+<p><%= link_to 'Ver PDF', post_path(@post, :pdf), class: :"btn btn-success active" %></p>
+
 <div align="left">
   <%= render @post.comments%>
 </div>
 
+<div class='navbar-inner'> <!-- <div class='navbar-inner'> -->
+  <div style="text-align:center">
+    <%= simple_form_for([@post, @post.comments.build]) do |f|  %>
 
-<div align="center">
-
-  <%= tinymce %>
-
-  <%= simple_form_for([@post, @post.comments.build], :html => {:class => 'well'}) do |f|  %>
-
-    <div class="field">
-      <%= f.label :Usuario %>
-      <%= f.text_field :commenter, :class => "input-xlarge", :rows => 10%> 
+    <div class="form-inputs">
+      <%= f.input :commenter, input_html: { class: 'input-xlarge'}, label: 'Usuario'%>
+      <%= f.input :body, input_html: { class: 'input-xlarge', :rows => 5}, label: 'Comentario'%>
     </div>
 
-    <div class="field">
-      <%= f.label :Comentario %>
-      <%= f.text_area :body, class: "tinymce", :rows => 1  %> 
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Comentar", class: :"btn btn-primary active"%>
-      <%= link_to 'Cancelar', posts_path, class: :"btn btn-danger active"%>
-      <% session[:url_anterior_edit] = nil %>
-    </div>
-  <% end %>
+      <div class="actions">
+        <%= f.submit "Comentar", class: :"btn btn-primary active"%>
+        <%= link_to 'Cancelar', posts_path, class: :"btn btn-danger active"%>
+        <% session[:url_anterior_edit] = nil %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
